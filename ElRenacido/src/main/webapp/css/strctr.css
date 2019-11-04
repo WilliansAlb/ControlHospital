@@ -1,0 +1,110 @@
+html,body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+    overflow: hidden;
+    
+    font:600 16px/18px 'Times New Roman';
+    background-image: url(../img/hospital.jpg);
+    background-size: cover;
+} 
+button{
+    font-family: 'Times New Roman';
+}
+div{
+    display: inline-block;
+}
+#c1{ position:absolute; z-index:0;
+    width: 100%;
+    height: 100%;
+}
+#c2{ position:absolute; z-index:1; 
+    width: 100%;
+    height: 100%;
+} 
+nav{
+    padding: 3px;
+}
+#na{
+    width: 15%;
+    border-radius: 18px 18px 18px 18px;
+    -moz-border-radius: 18px 18px 18px 18px;
+    -webkit-border-radius: 18px 18px 18px 18px;
+    border: 0px solid #000000;
+}
+#ver{
+    width: 70%;
+    padding: 0;
+    height: 50%;
+    float: right;
+    margin: 2% 0 0 0;
+}
+#nas{
+    font-size: 1vw;
+}
+#iz { 
+    width: 25%;
+    height: 100%;
+    float:left;
+    overflow: auto;
+}
+#ce{ 
+    width: 50%;
+    height: 100%;
+    float: left;
+    background-color: #c0c0c0;
+    opacity: 0.4;
+    overflow: auto;
+} 
+#de { 
+    color: gold;
+    width: 25%;
+    height: 100%;
+    float:right;   
+}
+#menu1{
+    width: 100%;
+    height: 100%;
+    margin:0;
+    position: absolute;
+    z-index: 1;
+    background-color:rgb(0, 79, 110);
+    opacity: 0.9;
+}
+#items{
+    width: 50%;
+    height: 60%;
+    margin: 7% 25% 25%;
+    background-color: #f7edf0;
+    border-radius: 10px 10px 10px 10px;
+-moz-border-radius: 10px 10px 10px 10px;
+-webkit-border-radius: 10px 10px 10px 10px;
+border: 0px solid #000000;
+}
+#ft{
+    display: grid;
+    grid-template-columns: 32% 32% 32%;
+    grid-template-rows: 45% 45%;
+    grid-column-gap: 2%;
+    grid-row-gap: 3%;
+    grid-auto-columns: auto;
+    margin: 10px 5px 15px 5px;
+    justify-content: center;
+}
+#ft img:hover{
+    width: 75%;
+    height: 75%;
+    transition-duration: 25ms;
+    transition: all .2s ease-in-out 0s;
+}
+
+.items1{
+    background-color: skyblue;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px 10px 10px 10px;
+-moz-border-radius: 10px 10px 10px 10px;
+-webkit-border-radius: 10px 10px 10px 10px;
+border: 0px solid #000000;
+}

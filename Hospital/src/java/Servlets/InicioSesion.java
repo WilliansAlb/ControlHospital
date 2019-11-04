@@ -5,8 +5,11 @@
  */
 package Servlets;
 
+import Base.Conexion;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -71,7 +74,36 @@ public class InicioSesion extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        Conexion cn = new Conexion();
+        
+        String sql = "SELECT pass FROM Usuarios WHERE user_name = ?";
+        String pass = "";
+        try{
+            cn.setPs(cn.getDb().prepareStatement(sql));
+            cn.getPs().setString(1, "yelbetto");
+            ResultSet rs = cn.getPs().executeQuery();
+            while(rs.next()){
+                pass = rs.getString("pass");
+            }
+        }catch(SQLException sa){
+        
+        }
+        
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet InicioSesion</title>");
+            out.println(pass);                 
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet InicioSesion at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }  
+        
     }
 
     /**

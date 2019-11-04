@@ -40,4 +40,9 @@ public class Conexion {
     public PreparedStatement getPs() {
         return ps;
     }
+
+    public void setPs(PreparedStatement ps) {
+        this.ps = ps;
+    }
+    
 }

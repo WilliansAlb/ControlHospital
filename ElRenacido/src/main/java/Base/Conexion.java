@@ -21,13 +21,25 @@ public class Conexion {
     private final String urlConnection = "jdbc:mysql://localhost:3306/Revista";
     Connection db = null;
     PreparedStatement ps = null;
+    boolean paso = false;
+    
+
+    public boolean isPaso() {
+        return paso;
+    }
+
+    public void setPaso(boolean paso) {
+        this.paso = paso;
+    }
+    
   
     public Conexion(){
         try {
             Class.forName("com.mysql.jdbc.Driver");
             db = DriverManager.getConnection(urlConnection, user, password);
+            paso=true;
         } catch (SQLException ex) {
-
+            paso=false;
         } catch (Exception e) {
 
         }
@@ -39,5 +51,9 @@ public class Conexion {
 
     public PreparedStatement getPs() {
         return ps;
+    }
+
+    public void setPs(PreparedStatement ps) {
+        this.ps = ps;
     }
 }

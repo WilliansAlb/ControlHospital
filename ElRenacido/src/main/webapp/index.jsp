@@ -17,6 +17,20 @@
         <%HttpSession s = request.getSession();
 
             if (s.getAttribute("usuario") == null) {%>
+        <%
+                if (s.getAttribute("mensaje") != null) {%>
+        <div id="fme" name="fme">
+            <div id="mensaje" name="mensaje">
+                <center>
+                    <button onclick="ocultar()">CERRAR MENSAJE</button>
+                    <br>
+                    <br>
+                    <img src="img/problema.jpg" width="30%" height="30%" alt="Mensaje" title="HOUSTON, WE HAVE A PROBLEM" style="float:left;">
+                    <h1><%out.print(s.getAttribute("mensaje"));%></h1>
+                </center>
+            </div>
+        </div>
+        <%}%> 
         <div class="login-form">
             <div class="login-wrap">
                 <div class="login-html">
@@ -30,7 +44,7 @@
                     <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Crear cuenta</label>
                     <div class="login-form">
                         <div class="sign-in-htm">
-                            <form action="InicioSesion" method="POST">
+                            <form action="Inicio" method="POST">
                                 <div class="group">
                                     <label for="user" class="label">Usuario</label>
                                     <input id="user1" name="user1" type="text" class="input" required>
@@ -90,6 +104,21 @@
                 </div>
             </div>
         </div>
+
         <%}%>
+        <%
+            if (s.getAttribute("mensaje") != null) {%>
+        <script>
+            function ocultar() {
+                var x = document.getElementById("mensaje");
+                var y = document.getElementById("fme");
+                if (x.style.display = 'block') {
+                    x.style.display = 'none';
+                    y.style.display = 'none';
+                }
+            }
+        </script>
+        <%}
+            s.setAttribute("mensaje", null);%> 
     </body>
 </html>

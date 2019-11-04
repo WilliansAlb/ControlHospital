@@ -5,14 +5,9 @@
  */
 package Servlets;
 
-import Base.Conexion;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,10 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author yelbetto
  */
-
-@WebServlet("/InicioSesion1")
-@MultipartConfig(maxFileSize = 16177215)
-public class InicioSesion extends HttpServlet {
+public class Redirect extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,11 +35,11 @@ public class InicioSesion extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet InicioSesion</title>");
-            out.println(request.getParameter("user1"));                 
+            out.println("<title>Servlet Redirect</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet InicioSesion at " + request.getContextPath() + "</h1>");
+            out.println("<h1>"+request.getAttribute("nombre")+"</h1>");
+            out.println("<h1>Servlet Redirect at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -65,6 +57,27 @@ public class InicioSesion extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        char op = request.getParameter("op").charAt(0);
+        switch (op) {
+            case '1':
+                request.setAttribute("nombre", "Farmacia");
+                break;
+            case '0':
+                request.setAttribute("nombre", "Hospitalizacion");
+                break;
+            case '2':
+                request.setAttribute("nombre", "Atención medica");
+                break;
+            case '3':
+                request.setAttribute("nombre", "Cirugia");
+                break;
+            case '4':
+                request.setAttribute("nombre", "Pacientes");
+                break;
+            default:
+                request.setAttribute("nombre", "Empleados");
+                break;
+        }
         processRequest(request, response);
     }
 
@@ -79,8 +92,7 @@ public class InicioSesion extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        
+        processRequest(request, response);
     }
 
     /**
@@ -89,7 +101,6 @@ public class InicioSesion extends HttpServlet {
      * @return a String containing servlet description
      */
     @Override
-    
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>

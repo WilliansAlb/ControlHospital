@@ -1,0 +1,120 @@
+<nav>
+    <center>
+        <div id="na" name="na">
+            <img src="../img/hosp.png" alt="El Renacido" width="20%" height="20%"
+                 style="display:inline-block; margin: 3% 0 0 0;">
+            <button id="ver" name="ver" style="display:inline-block" onclick="mostrar()">
+                <h1 style="display:inline-block" id="nas" name="nas">EL RENACIDO</h1><img src="../img/triangle.png"
+                                                                                          alt="" width="7%" height="7%" style="display:inline-block">
+            </button>
+        </div>
+    </center>
+</nav> 
+<div id="menu1" name="menu1" style="display: none;">
+    <div id="items" name="items">
+        <center>
+            <button onclick="ocultar()">CERRAR MENU</button>
+        </center>
+        <div id="ft" name="ft">
+            <div class="items1">
+                <center>
+                    <a href="../Redirect?op=0">
+                        <img src="../img/hospitalization.png" onmouseover="fun()" onmouseout="fun1()" title="Hospitalizacion"
+                             width="50%" height="50%">
+                    </a>
+
+                    <br>
+                    <div id="nombre" name="nombre">
+                        <h2>CAMAS</h2>
+                    </div>
+                </center>
+            </div>
+            <div class="items1">
+                <center>
+
+                    <a href="../Redirect?op=1">
+                        <img src="../img/drugs.png" onmouseover="fun2()" onmouseout="fun3()" title="Farmacia" width="50%"
+                             height="50%"> 
+                    </a>
+                    <br>
+                    <div id="nombre1" name="nombre1">
+                        <h2>FARMACIA</h2>
+                    </div>
+                </center>
+            </div>
+            <div class="items1">
+                <center>
+
+                    <a href="../Redirect?op=2">
+                        <img src="../img/doctor-with-stethoscope.png" onmouseover="fun4()" onmouseout="fun5()" title="Consulta"
+                             width="50%" height="50%">
+                    </a>
+                    <br>
+                    <div id="nombre2" name="nombre2">
+                        <h2>CONSULTA</h2>
+                    </div>
+                </center>
+            </div>
+            <div class="items1">
+                <center>
+                    <a href="../Redirect?op=3">
+                        <img src="../img/doctor.png" onmouseover="fun6()" onmouseout="fun7()" title="Cirugia" width="50%"
+                             height="50%">
+                    </a>
+
+                    <br>
+                    <div id="nombre3" name="nombre3">
+                        <h2>CIRUGIA</h2>
+                    </div>
+                </center>
+            </div>
+            <div class="items1">
+                <center>
+                    <a href="../Redirect?op=4">
+                        <img src="../img/admision-form.png" onmouseover="fun8()" onmouseout="fun9()" title="Pacientes"
+                             width="50%" height="50%">
+                    </a>
+                    <br>
+                    <div id="nombre4" name="nombre4">
+                        <h2>PACIENTES</h2>
+                    </div>
+                </center>
+            </div>
+            <div class="items1">
+                <center>
+                    <a href="../Redirect?op=5">
+                        <img src="../img/hospital-leaflet.png" onmouseover="fun10()" onmouseout="fun11()" title="Empleados"
+                         width="50%" height="50%">
+                    </a>
+                    <br>
+                    <div id="nombre5" name="nombre5">
+                        <h2>EMPLEADOS</h2>
+                    </div>
+                </center>
+            </div>
+        </div>
+    </div>
+</div>
+<div name="iz" id="iz">
+    <h1>texto</h1>
+</div>
+<div name="de" id="de">
+    <h1>texto2</h1>
+</div>
+<div name="ce" id="ce">
+    <h1>texto1</h1>
+</div>
+<script>
+    function mostrar() {
+        var x = document.getElementById("menu1");
+        if (x.style.display = 'none') {
+            x.style.display = 'block';
+        }
+    }
+    function ocultar() {
+        var x = document.getElementById("menu1");
+        if (x.style.display = 'block') {
+            x.style.display = 'none';
+        }
+    }
+</script>
