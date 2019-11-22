@@ -1,0 +1,14 @@
+html,body{
+    background-color: chocolate;
+    font-family: 'Times New Roman'
+}
+#obt{
+    margin: 15% 0% 2%;
+    width: 50%;
+    height: 50%;
+    background-color: aqua;
+    border-radius: 18px 18px 18px 18px;
+    -moz-border-radius: 18px 18px 18px 18px;
+    -webkit-border-radius: 18px 18px 18px 18px;
+    border: 0px solid #000000;
+}

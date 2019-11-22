@@ -4,9 +4,33 @@
         <servlet-name>InicioSesion</servlet-name>
         <servlet-class>Servlets.InicioSesion</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Inicio1</servlet-name>
+        <servlet-class>Servlets.Inicio1</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Redirect</servlet-name>
+        <servlet-class>Servlets.Redirect</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Farmacia</servlet-name>
+        <servlet-class>Servlets.Farmacia</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>InicioSesion</servlet-name>
         <url-pattern>/InicioSesion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Inicio1</servlet-name>
+        <url-pattern>/Inicio1</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Redirect</servlet-name>
+        <url-pattern>/Redirect</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Farmacia</servlet-name>
+        <url-pattern>/Farmacia</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

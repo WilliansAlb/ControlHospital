@@ -5,21 +5,31 @@
  */
 package Servlets;
 
-import Base.Conexion;
+import Clases.Guardar;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.io.StringWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 
 /**
  *
  * @author yelbetto
  */
-public class InicioSesion extends HttpServlet {
+@WebServlet(name = "Ingreso", urlPatterns = {"/Ingreso"})
+@MultipartConfig(maxFileSize = 16177215)
+public class Ingreso extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,11 +48,11 @@ public class InicioSesion extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet InicioSesion</title>");
-            out.println(request.getParameter("user1"));                 
+            out.println("<title>Servlet Ingreso</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet InicioSesion at " + request.getContextPath() + "</h1>");
+            out.println("<h1>" + request.getParameter("dato") + "</h1>");
+            out.println("<h1>Servlet Ingreso at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -74,20 +84,47 @@ public class InicioSesion extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Conexion cn = new Conexion();
-        
-        String sql = "SELECT pass FROM Usuarios WHERE user_name = ?";
-        String pass = "";
-        try{
-            cn.setPs(cn.getDb().prepareStatement(sql));
-            cn.getPs().setString(1, "yelbetto");
-            ResultSet rs = cn.getPs().executeQuery();
-            while(rs.next()){
-                pass = rs.getString("pass");
+        String code = "";
+        int lineas = 0;
+        ArrayList<String> lineas1 = new ArrayList<>();
+        if (request.getPart("archivo") != null) {
+            InputStream inputStream = null;
+            try {
+                Part filePart = request.getPart("archivo");
+                if (filePart.getSize() > 0) {
+                    inputStream = filePart.getInputStream();
+                }
+            } catch (Exception ex) {
+                System.out.println("fichero: " + ex.getMessage());
             }
-        }catch(SQLException sa){
-        
+            try {
+                StringBuffer codeBuffered = new StringBuffer();
+               
+                InputStream in = inputStream;
+                BufferedReader read = new BufferedReader(new InputStreamReader(in));
+
+                String line;
+                while ((line = read.readLine()) != null) {
+                    //codeBuffered.append(line).append("\n");
+                    lineas1.add(line);
+                }
+                //code = codeBuffered.toString(); // Este es el código de la página :)
+                in.close();
+                read.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
+        String[] lineando = new String[lineas1.size()];
+        
+        for (int u = 0; u < lineas1.size(); u++){
+            lineando[u] = lineas1.get(u);
+        }
+        
+        HttpSession s = request.getSession();
+        Guardar guardando = new Guardar();
+        guardando.setLineando(lineando);
+        s.setAttribute("usando", guardando);
         
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
@@ -95,15 +132,17 @@ public class InicioSesion extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet InicioSesion</title>");
-            out.println(pass);                 
+            out.println("<title>Servlet Ingreso</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet InicioSesion at " + request.getContextPath() + "</h1>");
+            out.println("<textarea>");
+            for (int i=0; i<lineas1.size();i++){
+            out.println(lineas1.get(i));
+            }
+            out.println("</textarea>");
             out.println("</body>");
             out.println("</html>");
-        }  
-        
+        }
     }
 
     /**

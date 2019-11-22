@@ -35,10 +35,10 @@ public class Redirect extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Redirect</title>");            
+            out.println("<title>Servlet Redirect</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>"+request.getAttribute("nombre")+"</h1>");
+            out.println("<h1>" + request.getAttribute("nombre") + "</h1>");
             out.println("<h1>Servlet Redirect at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
@@ -61,6 +61,7 @@ public class Redirect extends HttpServlet {
         switch (op) {
             case '1':
                 request.setAttribute("nombre", "Farmacia");
+                response.sendRedirect("views/farmacia.jsp");
                 break;
             case '0':
                 request.setAttribute("nombre", "Hospitalizacion");
@@ -78,7 +79,7 @@ public class Redirect extends HttpServlet {
                 request.setAttribute("nombre", "Empleados");
                 break;
         }
-        processRequest(request, response);
+        
     }
 
     /**
@@ -92,7 +93,15 @@ public class Redirect extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        response.setContentType("text/plain");
+        String fullname = request.getParameter("fullname");
+        if (fullname.equalsIgnoreCase("cod1")){
+            fullname = "10";
+        } else {
+            fullname = "5";
+        }
+        PrintWriter out = response.getWriter();
+        out.print(fullname);
     }
 
     /**

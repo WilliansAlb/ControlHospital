@@ -1,0 +1,158 @@
+<div id="iz">
+    <center>
+        <button onclick="mostrar1(document.getElementById('inmgd'), document.getElementById('img1'))"><img
+                src="../img/buy.png" alt="Compra" title="Compra" width="38%" height="38%" id="img1" name="img1"></button>
+        <div id="inmgd" style="display: none;" class="in">
+            <form action="../Farmacia" method="POST">
+                <label for="nombrem" class="label">Medicamento: </label>
+                <select name="nombrem" id="nombrem" onchange="mostrarInputs(this.value)">
+                    <option value="cod1">Paracetamol</option>
+                    <option value="cod2">Antrax</option>
+                    <option value="cod3">Xanax</option>
+                    <option value="todo">Nuevo</option>
+                </select>
+                <div id="nuevoc" style="display: none;">
+                    <input type="text" id="nombremn" placeholder="Nombre del medicamento nuevo" name="nombremn" />
+                    <br>
+                    <label for="costom">Costo unidad</label>
+                    <input type="number" id="costom" name="costom" onchange="descalcular()" value="0" min="0"
+                           step="0.01" />
+                </div>
+                <br>
+                <label for="cantidadm">Cantidad</label>
+                <input type="number" name="cantidadm" id="cantidadm" onchange="descalcular()" min="0" value="0"
+                       step="1" />
+                <br>
+                <label for="start">Fecha de ingreso</label>
+                <input type="date" id="start" name="start" value="2019-11-21" min="2019-11-21" max="2022-12-31">
+                <br>
+                <input type="button" value="Calcular total" id="ingm" name="ingm" />
+                <br>
+                <div id="calc" style="display: none;">
+                    <label for="costototalm">Costo total</label>
+                    <input type="text" id="costototalm" name="costototalm" readonly style="text-align: center;"
+                           size="5">
+                    <br>
+                    <input type="submit" onclick="calcular()" value="Comprar" id="inco" name="inco" />
+                </div>
+            </form>
+        </div>
+    </center>
+    <center>
+        <button onclick="mostrar1(document.getElementById('inmgd1'), document.getElementById('img2'))"><img
+                src="../img/sell.png" alt="Venta" title="Venta" width="38%" height="38%" id="img2" name="img2"></button>
+        <div id="inmgd1" style="display: none;" class="in">
+            <input type="text" id="nombre"
+                   <label for="nombrev" class="label">Medicamento: </label>
+            <select name="nombrev" id="nombrev" onchange="mostrarI(this.value)">
+                <option value="cod1">Paracetamol</option>
+                <option value="cod2">Antrax</option>
+                <option value="cod3">Xanax</option>
+                <option value="todo">Nuevo</option>
+            </select>
+            <label for="costou">Costo unidad</label>
+            <input type="text" id="costou" name="costou" readonly style="text-align: center;"
+                   size="5">
+            <br>
+            <label for="cantidadmv">Cantidad</label>
+            <input type="number" name="cantidadmv" id="cantidadmv" min="0" value="0"
+                   step="1" />
+            <br>
+            <label for="fechav">Fecha de la venta</label>
+            <input type="date" id="fechav" name="fechav" value="2019-11-21" min="2019-11-21" max="2022-12-31">
+            <br>
+            <button id="agregarv" name="agregarv">AGREGAR A LA VENTA</button>
+            <br>
+            <table id="mytable">
+                <thead>
+                <td>Codigo</td>
+                <td>Nombre</td>
+                <td>Costo Unidad</td>
+                <td>Cantidad</td>
+                <td>Eliminar</td>
+                </thead>
+            </table>
+            <button id="confirmarv" name="confirmarv">Vender</button>
+            <div id="datosv" style="display: none;">
+                <h1>hola</h1>
+            </div>
+        </div>
+    </center>
+    <center>
+        <button onclick="mostrar1(document.getElementById('inmgd2'), document.getElementById('img3'))"><img
+                src="../img/car.png" alt="Comprar mercaderia" title="Comprar mercaderia" width="38%" height="38%" id="img3"
+                name="img3"></button>
+        <div id="inmgd2" style="display: none;" class="in">
+            <label for="nombrem2" class="label">Medicamento: </label>
+            <select name="nombrem2" id="nombrem2">
+                <option value="cod1">Paracetamol</option>
+                <option value="cod2">Antrax</option>
+                <option value="cod3">Xanax</option>
+            </select>
+            <br>
+            <label for="pacientes" class="label">Interno: </label>
+            <select name="pacientes" id="pacientes">
+                <option value="cod1">Pablo Emilio Escobar Gaviria</option>
+                <option value="cod2">Vicent Van Gogh</option>
+                <option value="cod3">Pablo Picasso</option>
+            </select>
+            <br>
+            <label for="cantidadmp">Cantidad</label>
+            <input type="number" name="cantidadmp" id="cantidadmp" min="0" value="0"
+                   step="1" />
+        </div>
+    </center>
+</div>
+<div id="de">
+    <button onclick="mostrar1(document.getElementById('busquedai'), document.getElementById('img4'))"
+            style="width: 100%"><img src="../img/inventario.png" alt="Comprar mercaderia" title="Comprar mercaderia"
+                             width="38%" height="38%" id="img4" name="img4"></button>
+    <center>
+        <div id="busquedai" style="display: none;">
+            <h1>Inventario</h1>
+            <input type="text" id="nombreb" placeholder="Nombre o codigo a buscar" name="nombreb" />
+            <button id="buscarb">Buscar</button>
+            <hr>
+            <div id="resultadob" style="width: 100%;">
+                <table style="width: 100%;text-align: center;">
+                    <tr>
+                        <td>Codigo</td>
+                        <td>Nombre</td>
+                        <td>Costo</td>
+                        <td>Existencias</td>
+                    </tr>
+                    <tr>
+                        <td>M01</td>
+                        <td>Paracetamol</td>
+                        <td>2.00</td>
+                        <td>45</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </center>
+    <button onclick="mostrar1(document.getElementById('escazo'), document.getElementById('img5'))"
+            style="width: 100%"><img src="../img/falta.png" alt="Medicamentos escazos" title="Medicamentos escazos" width="38%"
+                             height="38%" id="img5" name="img5"></button>
+    <center>
+        <div id="escazo" style="display: none;">
+            <h1>Medicamentos escazos</h1>
+            <div id="resultadob1" style="width: 100%;">
+                <table>
+                    <tr>
+                        <td>Codigo</td>
+                        <td>Nombre</td>
+                        <td>Costo</td>
+                        <td>Existencias</td>
+                    </tr>
+                    <tr>
+                        <td>M01</td>
+                        <td>Paracetamol</td>
+                        <td>2.00</td>
+                        <td>45</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </center>
+</div>

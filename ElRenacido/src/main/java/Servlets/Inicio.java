@@ -77,7 +77,7 @@ public class Inicio extends HttpServlet {
         HttpSession s = request.getSession();
         Conexion cn = new Conexion();
         String user = request.getParameter("user1");
-        String sql = "SELECT COUNT(*) AS total FROM Usuarios WHERE user_name = ?";
+        String sql = "SELECT COUNT(*) AS total FROM Usuarios WHERE id_usuario = ?";
         int pass = 0;
         if (cn.isPaso()) {
             try {
@@ -88,7 +88,7 @@ public class Inicio extends HttpServlet {
                     pass = rs.getInt("total");
                 }
             } catch (SQLException sa) {
-
+                log("algun error");
             }
             if (pass != 0) {
                 response.sendRedirect("views/inicio.jsp");

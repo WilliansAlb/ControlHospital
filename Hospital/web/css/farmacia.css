@@ -1,0 +1,167 @@
+html,body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+    overflow: hidden;
+    background-image: url(../img/hospital.jpg);
+
+    font:600 16px/18px 'Times New Roman';
+    background-size: cover;
+}
+button{
+    font-family: 'Times New Roman';
+}
+div{
+    display: inline-block;
+}
+#inmgd1, #inmgd2{
+    background-color: black;
+    color: yellow;
+}
+#c1{ position:absolute; z-index:0;
+    width: 100%;
+    height: 100%;
+}
+#c2{ position:absolute; z-index:1; 
+    width: 100%;
+    height: 100%;
+} 
+nav{
+    padding: 3px;
+}
+#na{
+    width: 15%;
+    border-radius: 18px 18px 18px 18px;
+    -moz-border-radius: 18px 18px 18px 18px;
+    -webkit-border-radius: 18px 18px 18px 18px;
+    border: 0px solid #000000;
+}
+#ver{
+    width: 70%;
+    padding: 0;
+    height: 50%;
+    float: right;
+    margin: 2% 0 0 0;
+}
+#nas{
+    font-size: 1vw;
+}
+#iz { 
+    width: 40%;
+    height: 100%;
+    float:left;
+    overflow: auto;
+    opacity: 0.7;
+}
+#de { 
+    width: 60%;
+    height: 100%;
+    float:right;
+    background-color: black;
+    color: yellow;
+    opacity: 0.7;
+}
+#ingm{
+    margin: 2% 2% 0%;
+    font-family: 'Times New Roman', Times, serif;
+}
+#nombrem{
+    font-family: 'Times New Roman', Times, serif;
+}
+#inmgd input, select, label{
+    margin: 2% 2% 2%;
+}
+.in {
+    width: 100%;
+    height: 34%;
+    color: yellow;
+    background-color: black;
+}
+table {
+    width: 100%;
+    border: 1px solid rgb(255, 0, 0);
+    background-color: black;
+    color: yellow;
+}
+ th, td {
+    width: 25%;
+    text-align: center;
+    vertical-align: top;
+    border: 1px solid rgb(255, 0, 0);
+    border-spacing: 0;
+ }
+ 
+#menu1{
+    width: 100%;
+    height: 100%;
+    margin:0;
+    position: absolute;
+    z-index: 1;
+    background-color:rgb(0, 79, 110);
+    opacity: 0.9;
+}
+#items{
+    width: 50%;
+    height: 65%;
+    margin: 4% 25% 25%;
+    background-color: #f7edf0;
+    border-radius: 10px 10px 10px 10px;
+-moz-border-radius: 10px 10px 10px 10px;
+-webkit-border-radius: 10px 10px 10px 10px;
+border: 0px solid #000000;
+}
+#ft{
+    display: grid;
+    grid-template-columns: 32% 32% 32%;
+    grid-template-rows: 45% 45%;
+    grid-column-gap: 2%;
+    grid-row-gap: 3%;
+    grid-auto-columns: auto;
+    margin: 10px 5px 15px 5px;
+    justify-content: center;
+}
+#ft img:hover{
+    width: 80%;
+    height: 80%;
+    transition-duration: 25ms;
+    transition: all .2s ease-in-out 0s;
+}
+
+.items1{
+    background-color: skyblue;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px 10px 10px 10px;
+-moz-border-radius: 10px 10px 10px 10px;
+-webkit-border-radius: 10px 10px 10px 10px;
+border: 0px solid #000000;
+}
+
+
+#mensaje{
+    padding: 4px;
+    width: 40%;
+    height: 40%;
+    margin:15% 30% 25%;
+    
+    background-color:rgb(0, 79, 110); 
+    border-radius: 10px 10px 10px 10px;
+-moz-border-radius: 10px 10px 10px 10px;
+-webkit-border-radius: 10px 10px 10px 10px;
+border: 0px solid #000000;
+}
+#fme{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 3;
+    background-color: #fff;
+    opacity: 0.8;
+}
+button{
+    font-family: 'Times New Roman';
+}
+input{
+    margin: 5px 5px 5px;
+}

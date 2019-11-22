@@ -2,6 +2,15 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/home/yelbetto/Escritorio/Proyecto3/Hospital/src/java/Base/FarmaciaDTO.java</file>
+            <file>file:/home/yelbetto/Escritorio/Proyecto3/Hospital/src/java/Servlets/Redirect.java</file>
+            <file>file:/home/yelbetto/Escritorio/Proyecto3/Hospital/web/htmls/farmacia.html</file>
+            <file>file:/home/yelbetto/Escritorio/Proyecto3/Hospital/web/views/farmacia.jsp</file>
+            <file>file:/home/yelbetto/Escritorio/Proyecto3/Hospital/src/java/Servlets/Farmacia.java</file>
+            <file>file:/home/yelbetto/Escritorio/Proyecto3/Hospital/web/js/farmacia.js</file>
+            <file>file:/home/yelbetto/Escritorio/Proyecto3/Hospital/src/java/Servlets/Inicio1.java</file>
+            <file>file:/home/yelbetto/Escritorio/Proyecto3/Hospital/src/java/POJOS/Medicamento.java</file>
+        </group>
     </open-files>
 </project-private>
