@@ -62,7 +62,7 @@ public class Redirect extends HttpServlet {
         switch (op) {
             case '1':
                 request.setAttribute("nombre", "Farmacia");
-                response.sendRedirect("views/farmacia.jsp");
+                response.sendRedirect("views/farmacia_1.jsp");
                 break;
             case '0':
                 request.setAttribute("nombre", "Hospitalizacion");
@@ -78,6 +78,7 @@ public class Redirect extends HttpServlet {
                 break;
             default:
                 request.setAttribute("nombre", "Empleados");
+                response.sendRedirect("views/administracion.jsp");
                 break;
         }
         

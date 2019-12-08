@@ -24,18 +24,26 @@
                         <img src="https://icon-library.net/images/loading-icon-transparent-background/loading-icon-transparent-background-18.jpg" style="display: none;" id="cargando" name="cargando" alt="cargando" width="20" height="20">
                     </div>
                     <br>
-                    <label for="minimom">Minimo</label>
-                    <input type="number" name="minimom" id="minimom" onchange="descalcular()" min="0" value="0"
-                           step="1" />
-                    <br>
-                    <label for="costom">Costo unidad</label>
-                    <input type="number" id="costom" name="costom" onchange="descalcular()" value="0" min="0"
-                           step="0.01" />
-                    <br>
-                    <label for="cantidadm">Cantidad</label>
-                    <input type="number" name="cantidadm" id="cantidadm" onchange="descalcular()" min="0" value="0"
-                           step="1" />
-                    <br>
+                    <div class="dividiendocostes">
+                        <label for="minimom">Minimo</label>
+                        <input type="number" name="minimom" id="minimom" onchange="descalcular()" min="0" value="0"
+                               step="1" />
+                    </div>
+                    <div class="dividiendocostes">
+                        <label for="preciom">Precio</label>
+                        <input type="number" id="preciom" name="preciom" value="0" min="0.01"
+                               step="0.01"/>
+                    </div>
+                    <div class="dividiendocostes">
+                        <label for="costom">Costo unidad</label>
+                        <input type="number" id="costom" name="costom" onchange="descalcular()" value="0" min="0"
+                               step="0.01" />
+                    </div>
+                    <div class="dividiendocostes">
+                        <label for="cantidadm">Cantidad</label>
+                        <input type="number" name="cantidadm" id="cantidadm" onchange="descalcular()" min="0" value="0"
+                               step="1" />
+                    </div>
                     <label for="start">Fecha de ingreso</label>
                     <input type="date" id="start" name="start" value="2019-11-21" min="2019-11-21" max="2022-12-31">
                     <br>
@@ -64,14 +72,16 @@
                 <%}%>
             </select>
             <br>
-            <label for="costou">Costo unidad</label>
-            <input type="text" id="costou" name="costou" readonly style="text-align: center;"
-                   size="5" value="<%out.print(medicina.get(0).getPrecio());%>">
-            <br>
-            <label for="cantidadmv">Cantidad</label>
-            <input type="number" name="cantidadmv" id="cantidadmv" min="0" value="0"
-                   step="1" />
-            <br>
+            <div class="dividiendocostes">
+                <label for="costou">Costo unidad</label>
+                <input type="text" id="costou" name="costou" readonly style="text-align: center;"
+                       size="10" value="<%out.print(medicina.get(0).getPrecio());%>">
+            </div>
+            <div class="dividiendocostes">
+                <label for="cantidadmv">Cantidad</label>
+                <input type="number" name="cantidadmv" id="cantidadmv" min="0" value="0"
+                       step="1" />
+            </div>
             <label for="fechav">Fecha de la venta</label>
             <input type="date" id="fechav" name="fechav" value="2019-11-21" min="2019-11-21" max="2022-12-31">
             <br>
@@ -95,35 +105,12 @@
                     <input type="text" id="nit" placeholder="Nit" name="nit" value="" maxlength="8"/>
                     <input type="text" id="nombreventa" placeholder="Nombre" value="" name="nombreventa" />
                     <input type="text" id="ciudad" placeholder="Ciudad" name="ciudad" value="" />
-                    <button id="concluirv" onclick="sacando(document.getElementById('nit').value,document.getElementById('nombreventa').value,document.getElementById('ciudad').value)" >CONCLUIR VENTA</button>
+                    <button id="concluirv" onclick="sacando(document.getElementById('nit').value, document.getElementById('nombreventa').value, document.getElementById('ciudad').value)" >CONCLUIR VENTA</button>
                 </div>
             </div>
         </div>
     </center>
-    <center>
-        <button onclick="mostrar1(document.getElementById('inmgd2'), document.getElementById('img3'))"><img
-                src="../img/car.png" alt="Comprar mercaderia" title="Comprar mercaderia" width="38%" height="38%" id="img3"
-                name="img3"></button>
-        <div id="inmgd2" style="display: none;" class="in">
-            <label for="nombrem2" class="label">Medicamento: </label>
-            <select name="nombrem2" id="nombrem2">
-                <option value="cod1">Paracetamol</option>
-                <option value="cod2">Antrax</option>
-                <option value="cod3">Xanax</option>
-            </select>
-            <br>
-            <label for="pacientes" class="label">Interno: </label>
-            <select name="pacientes" id="pacientes">
-                <option value="cod1">Pablo Emilio Escobar Gaviria</option>
-                <option value="cod2">Vicent Van Gogh</option>
-                <option value="cod3">Pablo Picasso</option>
-            </select>
-            <br>
-            <label for="cantidadmp">Cantidad</label>
-            <input type="number" name="cantidadmp" id="cantidadmp" min="0" value="0"
-                   step="1" />
-        </div>
-    </center>
+    
 </div>
 <div id="de">
     <button onclick="mostrar1(document.getElementById('busquedai'), document.getElementById('img4'))"
@@ -133,10 +120,10 @@
         <div id="busquedai" style="display: none;">
             <h1>Inventario</h1>
             <input type="text" id="nombreb" placeholder="Nombre o codigo a buscar" name="nombreb" />
-            <button id="buscarb">Buscar</button>
+            <img src="https://icon-library.net/images/loading-icon-transparent-background/loading-icon-transparent-background-18.jpg" style="display: none;" id="cargandob" name="cargandob" alt="cargando" width="20" height="20">
             <hr>
             <div id="resultadob" style="width: 100%;">
-                <table style="width: 100%;text-align: center;">
+                <table style="width: 100%;text-align: center;" id="tablaresult1">
                     <tr>
                         <td>Codigo</td>
                         <td>Nombre</td>
@@ -147,9 +134,9 @@
                     <%for (int i = 0; i < medicina.size(); i++){
                     Medicamento tempo1 = medicina.get(i);
                     %>
-                    <tr>
-                        <td><%out.print(tempo1.getId_medicamento());%></td>
-                        <td><%out.print(tempo1.getNombre_medicamento());%></td>
+                    <tr id='<%out.print(i+"tabla");%>'>
+                        <td id="codbus<%out.print(i);%>"><%out.print(tempo1.getId_medicamento());%></td>
+                        <td id="nomin<%out.print(i);%>"><%out.print(tempo1.getNombre_medicamento());%></td>
                         <td><%out.print(tempo1.getPrecio());%></td>
                         <td><%out.print(tempo1.getExistencias());%></td>
                         <td><%out.print(tempo1.getMinimo());%></td>
@@ -176,7 +163,7 @@
                     </tr>
                     <%for (int i = 0; i < medicina.size(); i++){
                     Medicamento tempo1 = medicina.get(i);
-                    if (tempo1.getExistencias()>tempo1.getMinimo()){
+                    if (tempo1.getExistencias()<tempo1.getMinimo()){
                     %>
                     <tr>
                         <td><%out.print(tempo1.getId_medicamento());%></td>

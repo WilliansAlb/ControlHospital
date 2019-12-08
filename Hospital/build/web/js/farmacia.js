@@ -5,8 +5,8 @@ function mostrar1(x, y) {
         y.style.height = '8%';
     } else {
         x.style.display = 'none';
-        y.style.width = '38%';
-        y.style.height = '38%';
+        y.style.width = '59%';
+        y.style.height = '59%';
     }
 }
 function mostrarInputs(dato) {
@@ -71,7 +71,7 @@ function calcular() {
         }
     }
 }
-function sacando1(a,b,c) {
+function sacando1(a, b, c) {
     var resultado = "";
     var table = document.getElementById("mytable");
     var rowCount = table.rows.length + eliminados;
@@ -84,7 +84,7 @@ function sacando1(a,b,c) {
             var w = document.getElementById("totalventa" + i).innerText;
             $.ajax({
                 type: 'POST',
-                data: {codigom: x, nombremedi: y, cantidadunid: z, totalvent: w, venta1: w,nit:a,namecl:b,ciu:c,fechav:h},
+                data: {codigom: x, nombremedi: y, cantidadunid: z, totalvent: w, venta1: w, nit: a, namecl: b, ciu: c, fechav: h},
                 url: '../Farmacia',
                 success: function (result) {
                     resultado = result;
@@ -95,9 +95,9 @@ function sacando1(a,b,c) {
         }
     }
 }
-function sacando(a,b,c){
-    if (a.length > 0 && b.length > 0 && c.length > 0){
-        sacando1(a,b,c);
+function sacando(a, b, c) {
+    if (a.length > 0 && b.length > 0 && c.length > 0) {
+        sacando1(a, b, c);
     } else {
         alert("un campo está vacio");
     }
@@ -192,7 +192,6 @@ $(document).ready(function () {
         if (util === 0) {
             util = 1;
             document.getElementById("cargando").src = "https://icon-library.net/images/loading-icon-transparent-background/loading-icon-transparent-background-18.jpg";
-
         }
         clearTimeout(controladorTiempo);
         controladorTiempo = setTimeout(codigoAJAX, 250);
@@ -208,6 +207,63 @@ $(document).ready(function () {
         }
     });
 
+    $("#nombreb").on("keyup", function () {
+        clearTimeout(controladorTiempo1);
+        controladorTiempo1 = setTimeout(mostrandoFilas, 800);
+    });
+    function mostrandoFilas() {
+        var imagenc = document.getElementById("cargandob");
+        imagenc.src = "https://icon-library.net/images/loading-icon-transparent-background/loading-icon-transparent-background-18.jpg";
+        imagenc.style.display = "inline-block";
+        var buscando = document.getElementById("nombreb").value.toUpperCase();
+        var table1 = document.getElementById("tablaresult1");
+        var rowCount = table1.rows.length;
+        var vecesa = [];
+        var veceso = [];
+        for (var i = 0; i < rowCount - 1; i++) {
+            var nombre = document.getElementById('nomin' + i).innerText.toUpperCase();
+            var codigo1 = document.getElementById('codbus' + i).innerText;
+            if (buscando >= 0) {
+                if (codigo1 === buscando) {
+                    vecesa.push(i);
+                } else {
+                    veceso.push(i);
+                }
+            } else {
+                if (!nombre.includes(buscando)) {
+                    veceso.push(i);
+                } else {
+                    vecesa.push(i);
+                }
+            }
+        }
+        if (vecesa.length === 0) {
+            if (buscando.length === 0) {
+                for (var i = 0; i < rowCount - 1; i++) {
+                    $("#" + i + "tabla").show();
+                    imagenc.style.display = 'none';
+                }
+            } else {
+                for (var i = 0; i < rowCount - 1; i++) {
+                    $("#" + i + "tabla").show();
+                }
+                imagenc.src = "https://enphase.com/sites/default/files/content/Xmark_0.png";
+                imagenc.title = "Ningun resultado coincide";
+            }
+        } else {
+
+            for (var j = 0; j < vecesa.length; j++) {
+                $("#" + vecesa[j] + "tabla").show();
+            }
+
+            if (veceso.length !== 0) {
+                for (var j = 0; j < veceso.length; j++) {
+                    $("#" + veceso[j] + "tabla").hide();
+                }
+            }
+            imagenc.src = "http://www.pngmart.com/files/3/Green-Tick-Transparent-PNG.png";
+        }
+    }
     var k = 0;
     function codigoAJAX1() {
         var texto = document.getElementById("nit").value;

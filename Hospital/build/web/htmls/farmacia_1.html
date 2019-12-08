@@ -1,0 +1,174 @@
+<center>
+    <div id="menucontratacion">
+        <form name="fcolors">
+            <label><input type="radio" name="test" value="inmgd" checked><img src="../img/buy1.png" width="6%" height="6%" class="imgmenu" onclick="mostrandoDiv('inmgd')"></label><label><input type="radio" name="test" value="inmgd1"><img src="../img/shell1.png" width="6%" height="6%" class="imgmenu" onclick="mostrandoDiv('inmgd1')"></label><label><input type="radio" name="test" value="busquedai"><img src="../img/inventario1.png" width="6%" height="6%" class="imgmenu" onclick="mostrandoDiv('busquedai')"></label><label><input type="radio" name="test" value="escazo"><img src="../img/falta1.png"   width="6%" height="6%" class="imgmenu" onclick="mostrandoDiv('escazo')">
+            </label>
+        </form>
+    </div>
+    <div id="contenidopag">
+        <center>
+            <div id="inmgd" style="display: none;" class="in">
+                <form action="../Farmacia" method="POST">
+                    <h1>Ingreso de medicamento</h1>
+                    <label for="nombrem" class="label">Medicamento: </label>
+                    <select name="nombrem" id="nombrem" onchange="mostrarInputs(this.value)">
+                        <%for (int i = 0; i < medicina.size(); i++){
+                        Medicamento tempo = medicina.get(i);
+                        %>
+                        <option value="<%out.print(tempo.getId_medicamento());%>"><%out.print(tempo.getNombre_medicamento());%></option>
+                        <%}%>
+                        <option value="todo">Nuevo</option>
+                    </select>
+                    <%if (medicina.size()==0){%>
+                    <div id="nuevoc">
+                        <%} else {%>
+                        <div id="nuevoc" style="display: none;">
+                            <%}%>
+                            <input type="text" id="nombremn" placeholder="Nombre del medicamento" name="nombremn" />
+                            <img src="https://icon-library.net/images/loading-icon-transparent-background/loading-icon-transparent-background-18.jpg" style="display: none;" id="cargando" name="cargando" alt="cargando" width="20" height="20">
+                        </div>
+                        <div class="dividiendocostes">
+                            <label for="minimom">Minimo</label>
+                            <input type="number" name="minimom" id="minimom" onchange="descalcular()" min="0" value="0"
+                                   step="1" />
+                        </div>
+                        <div class="dividiendocostes">
+                            <label for="preciom">Precio</label>
+                            <input type="number" id="preciom" name="preciom" value="0" min="0.01"
+                                   step="0.01"/>
+                        </div>
+                        <div class="dividiendocostes">
+                            <label for="costom">Costo unidad</label>
+                            <input type="number" id="costom" name="costom" onchange="descalcular()" value="0" min="0"
+                                   step="0.01" />
+                        </div>
+                        <div class="dividiendocostes">
+                            <label for="cantidadm">Cantidad</label>
+                            <input type="number" name="cantidadm" id="cantidadm" onchange="descalcular()" min="0" value="0"
+                                   step="1" />
+                        </div>
+                        <br>
+                        <label for="start">Fecha de ingreso</label>
+                        <input type="date" id="start" name="start" value="2019-11-21" min="2019-11-21" max="2022-12-31">
+                        <br>
+                        <input type="button" value="Calcular total" id="ingm" name="ingm" />
+                        <br>
+                        <div id="calc" style="display: none;">
+                            <label for="costototalm">Costo total</label>
+                            <input type="text" id="costototalm" name="costototalm" readonly style="text-align: center;"
+                                   size="5">
+                            <br>
+                            <input type="submit" value="Comprar" id="inco" name="inco" />
+                        </div>
+                </form>
+            </div>
+            <div id="inmgd1" style="display: none;" class="in">
+                <h1>Ventas</h1>
+                <div id="izin1">
+                    <label for="nombrev" class="label">Medicamento: </label>
+                    <select name="nombrev" id="nombrev" onchange="mostrarI(this.value)">
+                        <%for (int i = 0; i < medicina.size(); i++){
+                        Medicamento tempo = medicina.get(i);
+                        %>
+                        <option value="<%out.print(tempo.getId_medicamento());%>"><%out.print(tempo.getNombre_medicamento());%></option>
+                        <%}%>
+                    </select>
+                    <br>
+                    <div class="dividiendocostes">
+                        <label for="costou">Costo unidad</label>
+                        <input type="text" id="costou" name="costou" readonly style="text-align: center;"
+                               size="10" value="<%out.print(medicina.get(0).getPrecio());%>">
+                    </div>
+                    <div class="dividiendocostes">
+                        <label for="cantidadmv">Cantidad</label>
+                        <input type="number" name="cantidadmv" id="cantidadmv" min="0" value="0"
+                               step="1" />
+                    </div>
+                    <label for="fechav">Fecha de la venta</label>
+                    <input type="date" id="fechav" name="fechav" value="2019-11-21" min="2019-11-21" max="2022-12-31">
+                    <br>
+                    <button id="agregarv" name="agregarv">AGREGAR A LA VENTA</button>
+                    <div id="datosv" style="display: none;">
+                        <input type="text" id="nit" placeholder="Nit" name="nit" value="" maxlength="8"/>
+                        <input type="text" id="nombreventa" placeholder="Nombre" value="" name="nombreventa" />
+                        <input type="text" id="ciudad" placeholder="Ciudad" name="ciudad" value="" />
+                        <button id="concluirv" onclick="sacando(document.getElementById('nit').value, document.getElementById('nombreventa').value, document.getElementById('ciudad').value)" >CONCLUIR VENTA</button>
+                    </div>
+                </div>
+                <div id="dein1">
+                    <div id="latabla" style="display: none;">
+                        <table id="mytable">
+                            <thead>
+                            <td>Codigo</td>
+                            <td>Nombre</td>
+                            <td>Costo Unidad</td>
+                            <td>Cantidad</td>
+                            <td>Total</td>
+                            <td>Eliminar</td>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    <button id="confirmarv" name="confirmarv" style="display:none;">AGREGAR DATOS VENTA</button>
+                </div>
+            </div>
+            <div id="busquedai" style="display: none;">
+                <h1>Inventario</h1>
+                <input type="text" id="nombreb" placeholder="Nombre o codigo a buscar" name="nombreb" />
+                <img src="https://icon-library.net/images/loading-icon-transparent-background/loading-icon-transparent-background-18.jpg" style="display: none;" id="cargandob" name="cargandob" alt="cargando" width="20" height="20">
+                <div id="resultadob">
+                    <table style="width: 100%;text-align: center;" id="tablaresult1">
+                        <tr>
+                            <td>Codigo</td>
+                            <td>Nombre</td>
+                            <td>Costo</td>
+                            <td>Existencias</td>
+                            <td>Minimo</td>
+                        </tr>
+                        <%for (int i = 0; i < medicina.size(); i++){
+                        Medicamento tempo1 = medicina.get(i);
+                        %>
+                        <tr id='<%out.print(i+"tabla");%>'>
+                            <td id="codbus<%out.print(i);%>"><%out.print(tempo1.getId_medicamento());%></td>
+                            <td id="nomin<%out.print(i);%>"><%out.print(tempo1.getNombre_medicamento());%></td>
+                            <td><%out.print(tempo1.getPrecio());%></td>
+                            <td><%out.print(tempo1.getExistencias());%></td>
+                            <td><%out.print(tempo1.getMinimo());%></td>
+                        </tr>
+                        <%}%>
+                    </table>
+                </div>
+            </div>
+            <div id="escazo" style="display: none;">
+                <h1>Medicamentos escazos</h1>
+                <div id="resultadob1" style="width: 100%;">
+                    <table>
+                        <tr>
+                            <td>Codigo</td>
+                            <td>Nombre</td>
+                            <td>Costo</td>
+                            <td>Existencias</td>
+                            <td>Minimo</td>
+                        </tr>
+                        <%for (int i = 0; i < medicina.size(); i++){
+                        Medicamento tempo1 = medicina.get(i);
+                        if (tempo1.getExistencias()<tempo1.getMinimo()){
+                            %>
+                            <tr>
+                                <td><%out.print(tempo1.getId_medicamento());%></td>
+                                <td><%out.print(tempo1.getNombre_medicamento());%></td>
+                                <td><%out.print(tempo1.getPrecio());%></td>
+                                <td><%out.print(tempo1.getExistencias());%></td>
+                                <td><%out.print(tempo1.getMinimo());%></td>
+                            </tr>
+                            <%} else {%>
+
+                            <%}}%>
+                    </table>
+                </div>
+            </div>
+    </div>
+</center>
+</center>
+<input id="temp" type="text" style="display: none;"/>
