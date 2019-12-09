@@ -1,0 +1,17 @@
+#contenidopag{  
+    background-image: url(../img/admin2.jpg);
+}
+.datoscandidato{
+      width: 45%;
+      margin: 4% 0% 0%;
+      display: inline-block;
+      background-color: whitesmoke;
+}
+#pacientes{
+    margin: 5% 25% 5%;
+    background-color: #013347;
+}
+input,select{
+    margin: 10px;
+    text-align: center;
+}

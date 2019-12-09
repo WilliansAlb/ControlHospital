@@ -1,0 +1,58 @@
+<center>
+    <div id="menucontratacion">
+        <form name="fcolors">
+            <label><input type="radio" name="test" value="div1" checked><img src="../img/buy1.png" class="imgmenu" onclick="mostrandoDiv('div1')"></label><label><input type="radio" name="test" value="div2"><img src="../img/shell1.png" class="imgmenu" onclick="mostrandoDiv('div2')"></label><label><input type="radio" name="test" value="div3"><img src="../img/inventario1.png" class="imgmenu" onclick="mostrandoDiv('div3')"></label><label><input type="radio" name="test" value="div4"><img src="../img/falta1.png" class="imgmenu" onclick="mostrandoDiv('div4')">
+            </label>
+        </form>
+    </div>
+    <div id="contenidopag">
+        <center>
+            <div id="div1" style="display: none;">
+                <div id="pacientes">
+                    <h1>Registro Consulta</h1>
+                    <div class="datoscandidato">
+                        <label for="nombrepaciente">Nombre:</label>
+                        <br>
+                        <input type="text" id="nombrepaciente" name="nombrepaciente">
+                    </div>
+                    <div class="datoscandidato">
+                        <label for="cui">Cui:</label>
+                        <br>
+                        <input type="text" id="cui" name="cui">
+                    </div>
+                    <div class="datoscandidato">
+                        <label for="areas">¿Qué doctor?</label>
+                        <br>
+                        <select id="areas">
+                            <option value="area1">Dr. Cajas</option>
+                            <option value="area2">Dr. Flores</option>
+                            <option value="area3">Dr. Aguilar</option>
+                        </select>
+                    </div>
+                    <div class="datoscandidato">
+                        <label for="edad">Edad</label>
+                        <br>
+                        <input type="number" id="edad" name="edad" min="1">
+                    </div>
+                    <div class="datoscandidato">
+                        <label for="profesion">Profesion:</label>
+                        <br>
+                        <input type="text" id="profesion">
+                    </div>
+                    <div class="datoscandidato">
+
+                    </div>    
+                </div>
+            </div>
+            <div id="div2" style="display: none;">
+                <h1>Pacientes2</h1>
+            </div>
+            <div id="div3" style="display: none;">
+                <h1>Pacientes3</h1>
+            </div>
+            <div id="div4" style="display: none;">
+                <h1>Pacientes4</h1>
+            </div>
+        </center>
+    </div>
+</center>

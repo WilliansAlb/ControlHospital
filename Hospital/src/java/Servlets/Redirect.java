@@ -75,6 +75,7 @@ public class Redirect extends HttpServlet {
                 break;
             case '4':
                 request.setAttribute("nombre", "Pacientes");
+                response.sendRedirect("views/pacientes.jsp");
                 break;
             default:
                 request.setAttribute("nombre", "Empleados");
