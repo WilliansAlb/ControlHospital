@@ -144,7 +144,7 @@ public class Farmacia extends HttpServlet {
                 
                 farmacia1.agregarCompra(existencias, id, fecha_ingreso, costototalm, seas.getAttribute("usuario").toString());
                 seas.setAttribute("mensaje", "Agregado correctamente el medicamento " + nombre_medicamento + ", numero de identificacion del medicamento " + id + " y numero de identificacion de compra 1");
-                response.sendRedirect("views/farmacia.jsp");
+                response.sendRedirect("views/farmacia_1.jsp");
             } else {
                 double costo = Double.parseDouble(request.getParameter("costom"));
                 int existencias = Integer.parseInt(request.getParameter("cantidadm"));

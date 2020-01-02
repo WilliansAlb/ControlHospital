@@ -1,55 +1,227 @@
 <center>
     <div id="menucontratacion">
         <form name="fcolors">
-            <label><input type="radio" name="test" value="div1" checked><img src="../img/buy1.png" class="imgmenu" onclick="mostrandoDiv('div1')"></label><label><input type="radio" name="test" value="div2"><img src="../img/shell1.png" class="imgmenu" onclick="mostrandoDiv('div2')"></label><label><input type="radio" name="test" value="div3"><img src="../img/inventario1.png" class="imgmenu" onclick="mostrandoDiv('div3')"></label><label><input type="radio" name="test" value="div4"><img src="../img/falta1.png" class="imgmenu" onclick="mostrandoDiv('div4')">
+            <label><input type="radio" name="test" value="div1" checked><img src="../img/buy1.png" class="imgmenu" onclick="mostrandoDiv('div1')"></label><label><input type="radio" name="test" value="div2"><img src="../img/shell1.png" class="imgmenu" onclick="mostrandoDiv('div2')"></label><label><input type="radio" name="test" value="div3"><img src="../img/inventario1.png" class="imgmenu" onclick="mostrandoDiv('div3')"></label><label><input type="radio" name="test" value="div4"><img src="../img/falta1.png" class="imgmenu" onclick="mostrandoDiv('div4')"></label><label><input type="radio" name="test" value="div5"><img src="../img/buy1.png" class="imgmenu" onclick="mostrandoDiv('div5')">
             </label>
         </form>
     </div>
     <div id="contenidopag">
         <center>
             <div id="div1" style="display: none;">
-                <h1>Agregar solicitud de empleo</h1>
-                <div class="datoscandidato">
-                    <label for="nombrecandidato">Nombre:</label>
-                    <br>
-                    <input type="text" id="nombrecandidato" name="nombrecandidato">
-                </div>
-                <div class="datoscandidato">
-                    <label for="cui">Cui:</label>
-                    <br>
-                    <input type="text" id="cui" name="cui">
-                </div>
-                <div class="datoscandidato">
-                    <label for="areas">¿En qué area desea trabajar?</label>
-                    <br>
-                    <select id="areas">
-                        <option value="area1">Medicina</option>
-                        <option value="area2">Conserjeria</option>
-                        <option value="area3">Cocina</option>
-                    </select>
-                </div>
-                <div class="datoscandidato">
-                    <label for="curriculumar">Curriculum</label>
-                    <br>
-                    <input type="file" id="curriculumar">
-                </div>
-                <div class="datoscandidato">
-                    <label for="profesion">Profesion:</label>
-                    <br>
-                    <input type="text" id="profesion">
-                </div>
-                <div class="datoscandidato">
-
+                <div class="admin">
+                    <form action="../Administracion" method="POST" enctype="multipart/form-data">
+                        <div class="datoscandidato" style="margin:8% 0% 0%;">
+                            <h1>Agregar solicitud de empleo</h1>
+                            <div class="datoscandidato2">
+                                <label for="nombrecandidato">Nombre:</label>
+                                <br>
+                                <input type="text" id="nombrecandidato" name="nombrecandidato" required>
+                            </div>
+                            <div class="datoscandidato2">
+                                <label for="cui">Cui:</label>
+                                <br>
+                                <input type="text" id="cui" name="cui" required>
+                            </div>
+                            <div class="datoscandidato2">
+                                <label for="areas">Area al que se postula</label>
+                                <br>
+                                <select id="areas" name="areas">
+                                    <option value="1">Medicina</option>
+                                    <option value="2">Conserjeria</option>
+                                    <option value="3">Cocina</option>
+                                </select>
+                            </div>
+                            <div class="datoscandidato2">
+                                <label for="empleos">Profesion: </label>
+                                <br>
+                                <select id="empleos" name="empleos">
+                                    <% 
+                                    for (int i = 0; i < cuantos.length; i++){
+                                    %>
+                                    <option value="<%out.print(i+1);%>"><%out.print(cuantos[i].getNombre_empleo());%></option>
+                                    <%}%>
+                                </select>
+                            </div>
+                            <div class="datoscandidato2">
+                                <label for="fechasolicitud">Fecha</label>
+                                <br>
+                                <input type="date" id="fechasolicitud" name="fechasolicitud" value="<%out.print(currentDate);%>" min="2008-01-01" >
+                            </div>
+                            <div class="datoscandidato2">
+                                <label for="curriculumar">Curriculum</label>
+                                <br>
+                                <input type="file" id="curriculumar" name="curriculumar" required>
+                            </div>
+                            <hr>
+                            <button id="ingresarsolicitud" type="submit">Ingresar Solicitud de Empleo</button>
+                        </div>
+                    </form>
                 </div>
             </div>
             <div id="div2" style="display: none;">
-                <h1>hola2</h1>
+                <div class="admin">
+                    <div class="consult1">
+                        <h1>Solicitudes de empleo</h1>
+                        <div class="datoscandidato">
+                            <label for="areasp">Area: </label>
+                            <select id="areasp" name="areasp">
+                                <option value="1">Pabellon 2 - Medicina Externa</option>
+                                <option value="2">Pabellon 3 - Medicina Interna</option>
+                            </select>
+                            <button id="vamos">Cargar Solicitudes</button></div>
+                        <div class="datoscandidato">
+                            <button id="vamos3" style="width: 10%; display: inline-block;"><-</button>
+                            <input type="text" maxlength="13" id="cuis" readonly style="text-align: center;">
+                            <button id="vamos2" style="width: 10%; display: inline-block;">-></button>
+                        </div>
+                        <div class="datoscandidato">
+                            <label for="puestos">Empleo: </label>
+                            <select id="puestos" name="puestos">
+                                <option value="1">Medico y Cirujano</option>
+                                <option value="2">Conserje</option>
+                                <option value="3">Portero</option>
+                            </select>
+                        </div>
+
+                        <div class="datoscandidato">
+                            <label for="fechacontratacion">Fecha:</label>
+                            <input type="date" id="fechacontratacion" name="fechacontratacion" value="<%out.print(currentDate);%>" min="2008-01-01" >
+                        </div>
+                        <br>
+                        <button id="contratar" style="margin: 2% 0% 0%;" disabled>Contratar</button><button id="rechazar" style="margin: 2% 0% 0%;" disabled>Rechazar</button>
+                    </div>
+                    <div class="consult2">
+                        <embed src="../Administracion?idempleado=2832048181007#toolbar=0&navpanes=0&scrollbar=0&zoom=60" type="application/pdf" width="100%" height="374px" id="pdf"/>
+                    </div>
+                </div>
             </div>
             <div id="div3" style="display: none;">
-                <h1>hola3</h1>
+                <div class="admin">
+                    <div class="consult1">
+                        <h1>CREAR EMPLEOS</h1>
+                        <div class="datoscandidato">
+                            <label>Empleo: </label>
+                            <br>
+                            <input type="text" id="nombreempleo" name="nombreempleo">
+                        </div>
+                        <div class="datoscandidato">
+                            <label>Salario: </label>
+                            <br>
+                            <input type="number" min="1" step="0.05" id="salario" name="salario">
+                        </div>
+                        <div class="datoscandidato">
+                            <label>Descuentos: </label>
+                            <select id="descontar" name="descontar" title="Dichos descuentos son: DESCUENTO DE IGSS, DESCUENTO DE IRTRA">
+                                <option value="0">NO</option>
+                                <option value="1">SI</option>
+                            </select>
+                        </div>
+                        <button id="crearempleo" style="margin: 2% 0% 0%;">CREAR EMPLEO</button>
+                    </div>
+                    <div class="consult2">
+                        <h1>EMPLEOS CREADOS</h1>
+                        <div class="datoscandidato">
+                            <table id="tablaempleos">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>NOMBRE EMPLEO</th>
+                                        <th>SALARIO</th>
+                                        <th>PRESTACIONES</th>
+                                        <th>EMPLEADOS CONTRATADOS</th>
+                                        <th>MODIFICAR</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="cuerpoempleo">
+                                    <%
+                                    if (admin.existeEmpleos()){
+                                    for (int i = 0; i < cuantos.length; i++){
+                                    %>
+                                    <tr>
+                                        <td><%out.print(i+1);%></td>
+                                        <td><%out.print(cuantos[i].getNombre_empleo());%></td>
+                                        <td><%out.print(cuantos[i].getSueldo());%></td><% String mensaje2 = "";
+                                        if (cuantos[i].isDescuentos()){mensaje2 = "S&iacute";}else{mensaje2 = "No";}%>
+                                        <td><%out.print(mensaje2);%></td>
+                                        <td><%out.print(cuantos[i].getTotal());%></td>
+                                        <td><button class="btnespecial">EDITAR</button></td>
+                                    </tr>
+                                    <%}} else {%>
+                                    <tr>
+                                        <td colspan="6">NO SE HA CREADO NINGUN EMPLEO AUN</td>
+                                    </tr>
+                                    <%}%>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div id="div4" style="display: none;">
-                <h1>hola4</h1>
+                <div class="admin">
+                    <div class="consult1">
+                        <h1>CREAR AREAS</h1>
+                        <div class="datoscandidato">
+                            <label>Nombre del &aacuterea: </label>
+                            <br>
+                            <input type="text" id="nombrearea" name="nombrearea">
+                        </div>
+                        <div class="datoscandidato">
+                            <label>Contratando: </label>
+                            <br>
+                            <select id="contratando" name="contratando">
+                                <option value="true">S&iacute</option>
+                                <option value="false">No</option>
+                            </select>
+                        </div>
+                        <div class="datoscandidato">
+                            <button id="creararea">CREAR AREA</button>
+                        </div>
+                    </div>
+                    <div class="consult2">
+                        <h1>AREAS CREADAS</h1>
+                        <div class="datoscandidato">
+                            <table id="tablaareas">
+                                <thead>
+                                    <tr>
+                                        <th>NO</th>
+                                        <th>NOMBRE AREA</th>
+                                        <th>CONTRATANDO</th>
+                                        <th>EMPLEADOS CONTRATADOS</th>
+                                        <th>CANDIDATOS</th>
+                                        <th>EDITAR</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="cuerpoarea">
+                                    <%
+                                    if (admin.existeAreas()){
+                                    for (int i = 0; i < cuantas.length; i++){
+                                    %>
+                                    <tr>
+                                        <td><%out.print(i+1);%></td>
+                                        <td><%out.print(cuantas[i].getNombre_area());%></td>
+                                        <% String mensaje = "";
+                                        if (cuantas[i].isContratando()){mensaje = "S&iacute";}else{mensaje = "No";}%>
+                                        <td><%out.print(mensaje);%></td>
+                                        <td><%out.print(cuantas[i].getTotal());%></td>
+                                        <td><%out.print(cuantas[i].getCandidatos());%></td>
+                                        <td><button class="btnespecial">EDITAR</button></td>
+                                    </tr>
+                                    <%}} else {%>
+                                    <tr>
+                                        <td colspan="6">NO SE HA CREADO NINGUNA AREA AUN</td>
+                                    </tr>
+                                    <%}%>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="div5">
+                <div class="admin">
+                    
+                </div>
             </div>
         </center>
     </div>

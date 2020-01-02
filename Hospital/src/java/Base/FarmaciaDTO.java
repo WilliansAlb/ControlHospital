@@ -72,6 +72,7 @@ public class FarmaciaDTO {
         }
         return id_medicamento;
     }
+    
     public void agregarCompra(int cantidad, int id_medicamento, String fecha_compra,double total,String id_empleado){
         String sql = "INSERT INTO Compras(cantidad,fecha_compra,id_medicamento,total,id_empleado) VALUES(?,?,?,?,?)";
         
@@ -88,6 +89,7 @@ public class FarmaciaDTO {
         
         }
     }
+    
     public ArrayList<Medicamento> nombresMedicamentos(){
         String sql = "SELECT * FROM Medicamentos";
         ArrayList<Medicamento> nuevo = new ArrayList<>();

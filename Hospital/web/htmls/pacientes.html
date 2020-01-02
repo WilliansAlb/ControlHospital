@@ -1,3 +1,82 @@
+<div id="fme">
+    <div id="relleno1" class="si"></div><div id="centro">
+        <div id="relleno2" class="di"></div>
+        <div id="mensaje">
+            <center>
+                <button id="cerrarmensaje">CERRAR</button>
+                <br>
+                <h3 style="margin: 0;color: white;">Completar ingreso consulta</h3>
+                <div class="datoscandidato2">
+                    <label for="nit">NIT:</label>
+                    <br>
+                    <input id="nit" name="nit" type="text" maxlength="8">
+                </div>
+                <div class="datoscandidato2">
+                    <label for="nombrefactura">Nombre:</label>
+                    <br>
+                    <input id="nombrefactura" name="nombrefactura" type="text">
+                </div>
+                <div class="datoscandidato2">
+                    <label for="ciudadfactura">Ciudad:</label>
+                    <br>
+                    <input id="ciudadfactura" name="ciudadfactura" type="text">
+                </div>
+                <div class="datoscandidato2">
+                    <label for="preciofactura">Valor de la consulta:</label>
+                    <br>
+                    <input id="preciofactura" name="preciofactura" type="text">
+                </div>
+                <div class="datoscandidato2">
+                    <button id="confirmarconsulta">CONFIRMAR CONSULTA</button>
+                </div>
+            </center>
+        </div>
+        <div id="relleno3" class="di"></div>
+    </div>
+    <div id="relleno4" class="si"></div>
+</div>
+<div id="fme2">
+    <div id="re1" class="si"></div><div id="ce2">
+        <div id="re2" class="di"></div>
+        <div id="mensaje2">
+            <center>
+                <button id="cerrarmensaje2">CERRAR</button>
+                <br>
+                <h5 style="color: white; margin: 1%;">INGRESO PACIENTE NUEVO</h5>
+                <h2 style="color: white; margin: 1%;" id="ingresodatos"></h2>
+                <div id="ocultopacientes">
+                    <div class="datoscandidato2">
+                        <label for="cui">Cui:</label>
+                        <br>
+                        <input type="text" id="cui" name="cui" maxlength="13">
+                    </div>
+                    <div class="datoscandidato2">
+                        <label for="sexo">Sexo:</label>
+                        <br>
+                        <select id="sexo" name="sexo">
+                            <option value="H">Hombre</option>
+                            <option value="M">Mujer</option>
+                        </select>
+                    </div>
+                    <div class="datoscandidato2">
+                        <label for="edad">Edad:</label>
+                        <br>
+                        <input type="number" id="edad" name="edad" min="1">
+                    </div>
+                    <div class="datoscandidato2">
+                        <label for="peso">Peso:</label>
+                        <br>
+                        <input type="number" id="peso" name="peso" min="1">
+                    </div>
+                    <hr>
+                    <button id="ingresarpaciente" disabled>Ingresar consulta</button>
+                </div>
+            </center>
+        </div>
+        <div id="re3" class="di"></div>
+    </div>
+    <div id="re4" class="si"></div>
+</div>
 <center>
     <div id="menucontratacion">
         <form name="fcolors">
@@ -8,44 +87,81 @@
     <div id="contenidopag">
         <center>
             <div id="div1" style="display: none;">
-                <div id="pacientes">
-                    <h1>Registro Consulta</h1>
-                    <div class="datoscandidato">
-                        <label for="nombrepaciente">Nombre:</label>
-                        <br>
-                        <input type="text" id="nombrepaciente" name="nombrepaciente">
+                <div class="pacientes">
+                    <h2 style="color: white; margin: 2%;">Registro Consulta</h2>
+                    <div id="consult1" class="consult">
+                        <div class="datoscandidato">
+                            <label for="nombrepaciente">Nombre:</label>
+                            <br>
+                            <input list="nombres" id="nombrepaciente" value="" name="nombrepaciente">
+                            <br>
+                            <datalist id="nombres">
+                                <%for (int i = 0; i < nombres.length; i++){%>
+                                <option value="<%out.print(nombres[i]);%>">
+                                    <%}%>
+                            </datalist>
+                        </div>
+                        <div class="datoscandidato">
+                            <label for="doctores">Doctor:</label>
+                            <br>
+                            <select id="doctores" name="doctores">
+                                <option value="2018302211007">Alfredo Cajas</option>
+                                <option value="2">Montecarlo Flores</option>
+                                <option value="3">Alonzo Aguilar</option>
+                            </select>
+                        </div>
+                        <div class="datoscandidato">
+                            <button id="ingresarconsulta" disabled>Ingresar consulta</button>
+                        </div>
                     </div>
-                    <div class="datoscandidato">
-                        <label for="cui">Cui:</label>
-                        <br>
-                        <input type="text" id="cui" name="cui">
+                    <div id="consult2" class="consult">
+                        <div class="datoscandidato" id="detallescandidato">
+                            <div style="width: 49%;">
+                                <label for="valorconsulta">Valor de la consulta:</label>
+                                <br>
+                                <input id="valorconsulta" name="valorconsulta" value="15" type="text" maxlength="4" readonly>
+                            </div>
+                        </div>
+                        <div class="datoscandidato">
+                            <h3 id="nombreDoctor">Lista de espera</h3>
+                            <table id="listadoespera">
+                                <thead>
+                                <td>Numero</td>
+                                <td>Nombre</td>
+                                </thead>
+                                <tbody id="cuerpolista">
+                                <th>1</th>
+                                <th>Willians Lopez</th>
+                                </tbody>
+                            </table>
+                        </div> 
                     </div>
-                    <div class="datoscandidato">
-                        <label for="areas">¿Qué doctor?</label>
-                        <br>
-                        <select id="areas">
-                            <option value="area1">Dr. Cajas</option>
-                            <option value="area2">Dr. Flores</option>
-                            <option value="area3">Dr. Aguilar</option>
-                        </select>
-                    </div>
-                    <div class="datoscandidato">
-                        <label for="edad">Edad</label>
-                        <br>
-                        <input type="number" id="edad" name="edad" min="1">
-                    </div>
-                    <div class="datoscandidato">
-                        <label for="profesion">Profesion:</label>
-                        <br>
-                        <input type="text" id="profesion">
-                    </div>
-                    <div class="datoscandidato">
-
-                    </div>    
                 </div>
             </div>
             <div id="div2" style="display: none;">
-                <h1>Pacientes2</h1>
+                <div class="pacientes">
+                    <h2 style="color: white; margin: 2%;">Cirugia</h2>
+                    <div class="datoscandidato2">
+                        <label for="pacientescirugia">Paciente:</label>
+                        <br>
+                        <input list="pacientesci" id="pacientescirugia" value="" name="pacientescirugia">
+                        <br>
+                        <datalist id="pacientesci">
+                            <%for (int i = 0; i < nombres.length; i++){%>
+                            <option value="<%out.print(nombres[i]);%>">
+                                <%}%>
+                        </datalist>
+                    </div>
+                    <div class="datoscandidato2">
+                        <label for="cirugia">Cirugia: </label>
+                        <br>
+                        <select id="cirugia" name="cirugia">
+                            <option value="ci1">Cirugia 1</option>
+                            <option value="ci2">Cirugia 2</option>
+                            <option value="ci3">Cirugia 3</option>
+                        </select>
+                    </div>
+                </div>
             </div>
             <div id="div3" style="display: none;">
                 <h1>Pacientes3</h1>
@@ -53,6 +169,7 @@
             <div id="div4" style="display: none;">
                 <h1>Pacientes4</h1>
             </div>
+            <input type="text" id="temp" name="temp" style="display: none;">
         </center>
     </div>
 </center>

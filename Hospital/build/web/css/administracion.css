@@ -2,7 +2,89 @@
     background-image: url(../img/admin2.jpg);
 }
 .datoscandidato{
-      width: 45%;
-      margin: 4% 0% 0%;
-      display: inline-block;
+    width: 90%;
+    margin: 4% 0% 0%;
+    background-color: whitesmoke;
+    border-radius: 15px 15px 15px 15px;
+    -moz-border-radius: 15px 15px 15px 15px;
+    -webkit-border-radius: 15px 15px 15px 15px;
+    border: 0px solid #000000;
+}
+.datoscandidato2{
+    width: 48%;
+    margin: 1% 0% 0%;
+    background-color: whitesmoke;
+    border-radius: 15px 15px 15px 15px;
+    -moz-border-radius: 15px 15px 15px 15px;
+    -webkit-border-radius: 15px 15px 15px 15px;
+    border: 0px solid #000000;
+}
+.admin{
+    width: 80%;
+    margin: 4% 0% 0%;
+    height: 380px;
+    background-color: #013347;
+    border-radius: 15px 15px 15px 15px;
+    -moz-border-radius: 15px 15px 15px 15px;
+    -webkit-border-radius: 15px 15px 15px 15px;
+    border: 0px solid #000000;
+    opacity: 0.8;
+}
+
+.consult1{
+    width: 45%;
+    float: left;
+}
+.consult2{
+    width: 55%;
+    float: right;
+    height: 380px;
+    overflow-y: scroll;
+}
+input{
+    text-align: center;
+}
+#tablaempleos, #tablaareas{
+    width: 100%;
+    background-color: yellow;
+}
+#tablaempleos tbody td{
+    text-align: center;
+    font-size: 15px;
+    color: yellow;
+    border: 2px solid;
+    background-color: #000000;
+}
+#tablaempleos thead th{
+    text-align: center;
+    font-size: 10px;
+    color: yellow;
+    border: 2px solid;
+    background-color: #000000;
+}
+#tablaareas tbody td{
+    text-align: center;
+    font-size: 15px;
+    color: yellow;
+    border: 2px solid;
+    background-color: #000000;
+}
+#tablaareas thead th{
+    text-align: center;
+    font-size: 10px;
+    color: yellow;
+    border: 2px solid;
+    background-color: #000000;
+}
+.btnespecial{
+    color: yellow;
+    background-color: black;
+    border: 0px solid #000000;
+}
+.btnespecial:hover{
+    border-bottom: 3px solid yellow;
+    cursor: pointer;
+}
+.btnespecial:focus{
+    outline: none;
 }

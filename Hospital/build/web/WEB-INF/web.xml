@@ -16,6 +16,22 @@
         <servlet-name>Farmacia</servlet-name>
         <servlet-class>Servlets.Farmacia</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Pacientes</servlet-name>
+        <servlet-class>Servlets.Pacientes</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Recepcion</servlet-name>
+        <servlet-class>Servlets.Recepcion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Administracion</servlet-name>
+        <servlet-class>Servlets.Administracion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Admin</servlet-name>
+        <servlet-class>Servlets.Admin</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>InicioSesion</servlet-name>
         <url-pattern>/InicioSesion</url-pattern>
@@ -31,6 +47,22 @@
     <servlet-mapping>
         <servlet-name>Farmacia</servlet-name>
         <url-pattern>/Farmacia</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Pacientes</servlet-name>
+        <url-pattern>/Pacientes</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Recepcion</servlet-name>
+        <url-pattern>/Recepcion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Administracion</servlet-name>
+        <url-pattern>/Administracion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Admin</servlet-name>
+        <url-pattern>/Admin</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

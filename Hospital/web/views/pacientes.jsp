@@ -4,6 +4,7 @@
     Author     : yelbetto
 --%>
 
+<%@page import="Base.PacientesDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -17,8 +18,12 @@
         <script type="text/javascript" src="../js/funs.js"></script>
         <script type="text/javascript" src="../js/jquery.js"></script>
         <script type="text/javascript" src="../js/pestañas.js"></script>
+        <script type="text/javascript" src="../js/pacientes.js"></script>
     </head>
     <body>
+        <%PacientesDTO pac = new PacientesDTO();
+          String[] nombres = pac.nombres();
+        %>
         <%@include file="nav.html"%>
         <%@include file="../htmls/pacientes.html" %>
     </body>
