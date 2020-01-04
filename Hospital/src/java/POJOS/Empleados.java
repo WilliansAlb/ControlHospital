@@ -17,6 +17,15 @@ public class Empleados {
     private int id_empleos;
     private boolean despedido;
     private boolean contratado;
+    private String fecha_contrato;
+
+    public String getFecha_contrato() {
+        return fecha_contrato;
+    }
+
+    public void setFecha_contrato(String fecha_contrato) {
+        this.fecha_contrato = fecha_contrato;
+    }
     
     public Empleados(){
     

@@ -1,15 +1,30 @@
-
+function editarempleado(cui){
+    alert(cui);
+}
 $(document).ready(function () {
     $("#cuis").val("SIN CARGAR");
     $("#vamos2").attr("disabled", true);
     $("#vamos3").attr("disabled", true);
     $("#contratar").attr("disabled", true);
     $("#crearempleo").attr("disabled", true);
+    $("#nombretarifa").val("");
+    $("#valortarifa").val("0");
+    $("#preciotarifa").val("0");
+    $("#medicoespecial").val("0");
+    $("#pagomedicoes").val("0");
     var controladorTiempo1 = "";
     var nombres = [];
     var ids = [];
     var donde = 1;
     var posicion = 0;
+    $("#medicoespecial").on("change", function () {
+        if ($("#medicoespecial").val() === '1') {
+            $("#ocultomedico").show();
+        } else {
+            $("#ocultomedico").hide();
+            $("#pagomedicoes").val("0");
+        }
+    });
     $("#vamos2").click(function () {
         if (posicion < (nombres.length - 1)) {
             posicion++;
@@ -156,10 +171,10 @@ $(document).ready(function () {
             url: '../Admin',
             success: function (result) {
                 $.each(result, function (index, item) {
-                    if(seguimiento2 === 0){
-                        mensaje += "<tr><td>"+ item +"</td>";
+                    if (seguimiento2 === 0) {
+                        mensaje += "<tr><td>" + item + "</td>";
                         seguimiento2++;
-                    }else if (seguimiento2 === 1) {
+                    } else if (seguimiento2 === 1) {
                         mensaje += "<td>" + item + "</td>";
                         seguimiento2++;
                     } else if (seguimiento2 === 2) {
@@ -174,6 +189,77 @@ $(document).ready(function () {
                     }
                 });
                 alert(result);
+                x.innerHTML = mensaje;
+            }
+        });
+    }
+    $("#creartarifa").click(function () {
+        $.ajax({
+            type: 'POST',
+            data: {tipo: 3, nombretarifa: $("#nombretarifa").val(), valortarifa: $("#valortarifa").val(), preciotarifa: $("#preciotarifa").val(), medicoespecial: $("medicoespecial").val(), pagomedicoes: $("#pagomedicoes").val()},
+            url: '../Admin',
+            success: function (result) {
+                if (result === "Creada tarifa") {
+                    editarTablaTarifas();
+                } else {
+                    alert("Hubo un error");
+                }
+            }
+        });
+    });
+    var seguimiento3 = 0;
+    function editarTablaTarifas(){
+         var mensaje = "";
+        var x = document.getElementById("cuerpotarifa");
+        $.ajax({
+            type: 'GET',
+            data: {tipo2: 3},
+            url: '../Admin',
+            success: function (result) {
+                $.each(result, function (index, item) {
+                    if (seguimiento3 === 0) {
+                        mensaje += "<tr><td>" + item + "</td>";
+                        seguimiento3++;
+                    } else if (seguimiento3 === 1) {
+                        mensaje += "<td>" + item + "</td>";
+                        seguimiento3++;
+                    } else if (seguimiento3 === 2) {
+                        mensaje += "<td>" + item + "</td>";
+                        seguimiento3++;
+                    } else if (seguimiento3 === 3) {
+                        mensaje += "<td>" + item + "</td>";
+                        seguimiento3++;
+                    } else if (seguimiento3 === 4) {
+                        mensaje += "<td>" + item + "</td>";
+                        seguimiento3++;
+                    } else if (seguimiento3 === 5) {
+                        mensaje += "<td>" + item + "</td><td><button class='btnespecial'>EDITAR</button></td></tr>";
+                        seguimiento3 = 0;
+                    }
+                });
+                alert(result);
+                x.innerHTML = mensaje;
+            }
+        });
+    }
+    var controladorTiempo1 = "";
+    $("#nombreempleado1").on("keyup", function () {
+        clearTimeout(controladorTiempo1);
+        controladorTiempo1 = setTimeout(devolviendoIds, 800);
+    });
+    function devolviendoIds(){
+        var nombre = $("#nombreempleado1").val();
+        var mensaje = "";
+        var x = document.getElementById("idempleado1");
+        x.innerHTML = "";
+        $.ajax({
+            type: 'GET',
+            data: {tipo2: 4, nombre1: nombre},
+            url: '../Admin',
+            success: function (result) {
+                $.each(result, function (index, item) {
+                    mensaje += "<option value='"+item+"'>"+item+"</option>"; 
+                });
                 x.innerHTML = mensaje;
             }
         });

@@ -8,6 +8,7 @@ package Servlets;
 import Base.AdministracionDTO;
 import POJOS.Areas;
 import POJOS.Empleos;
+import POJOS.Tarifas;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -71,7 +72,7 @@ public class Admin extends HttpServlet {
                 cadena = admin.devolviendo();
                 ArrayList<String> datos1 = new ArrayList<>();
                 for (int i = 0; i < cadena.length; i++) {
-                    datos1.add(cadena[i].getId_empleos()+"");
+                    datos1.add(cadena[i].getId_empleos() + "");
                     datos1.add(cadena[i].getNombre_empleo());
                     datos1.add(cadena[i].getSueldo() + "");
                     if (cadena[i].isDescuentos()) {
@@ -95,7 +96,7 @@ public class Admin extends HttpServlet {
                 cadena = admin.devolviendoAreas();
                 ArrayList<String> datos1 = new ArrayList<>();
                 for (int i = 0; i < cadena.length; i++) {
-                    datos1.add(cadena[i].getId_area()+"");
+                    datos1.add(cadena[i].getId_area() + "");
                     datos1.add(cadena[i].getNombre_area());
                     if (cadena[i].isContratando()) {
                         datos1.add("Sí");
@@ -113,6 +114,39 @@ public class Admin extends HttpServlet {
                 response.setCharacterEncoding("UTF-8");
                 String nuevo;
                 nuevo = g.toJson(datos2);
+                response.getWriter().write(nuevo);
+            } else if (tipo2.equals("3")) {
+                Tarifas[] cadena;
+                cadena = admin.devolviendoTarifas();
+                ArrayList<String> datos1 = new ArrayList<>();
+                for (int i = 0; i < cadena.length; i++) {
+                    datos1.add(cadena[i].getId_tarifa() + "");
+                    datos1.add(cadena[i].getNombre());
+                    datos1.add(cadena[i].getCosto() + "");
+                    if (cadena[i].getPago_especialista() > 0) {
+                        datos1.add("Sí");
+                    } else {
+                        datos1.add("No");
+                    }
+                    datos1.add(cadena[i].getPago_especialista() + "");
+                    datos1.add(cadena[i].getPrecio() + "");
+                }
+                String[] datos2 = new String[datos1.size()];
+                for (int u = 0; u < datos1.size(); u++) {
+                    datos2[u] = datos1.get(u);
+                }
+                response.setContentType("application/json");
+                response.setCharacterEncoding("UTF-8");
+                String nuevo;
+                nuevo = g.toJson(datos2);
+                response.getWriter().write(nuevo);
+            } else if (tipo2.equals("4")) {
+                String[] ids;
+                ids = admin.devolviendoIds(request.getParameter("nombre1"));
+                response.setContentType("application/json");
+                response.setCharacterEncoding("UTF-8");
+                String nuevo;
+                nuevo = g.toJson(ids);
                 response.getWriter().write(nuevo);
             }
         }
@@ -152,6 +186,19 @@ public class Admin extends HttpServlet {
                 admin.ingresarArea(nombre_area, contratando);
                 if (admin.isTodoBien()) {
                     mensaje = "Creada area";
+                } else {
+                    mensaje = "Error al crear area";
+                }
+                response.getWriter().write(mensaje);
+            } else if (tipo.equals("3")) {
+                String mensaje = "";
+                String nombretarifa = request.getParameter("nombretarifa");
+                Double valortarifa = Double.parseDouble(request.getParameter("valortarifa"));
+                Double preciotarifa = Double.parseDouble(request.getParameter("preciotarifa"));
+                Double pagomedicoes = Double.parseDouble(request.getParameter("pagomedicoes"));
+                admin.ingresarTarifa(nombretarifa, valortarifa, preciotarifa, pagomedicoes);
+                if (admin.isTodoBien()) {
+                    mensaje = "Creada tarifa";
                 } else {
                     mensaje = "Error al crear area";
                 }

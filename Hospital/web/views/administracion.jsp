@@ -4,6 +4,8 @@
     Author     : yelbetto
 --%>
 
+<%@page import="POJOS.Empleados"%>
+<%@page import="POJOS.Tarifas"%>
 <%@page import="POJOS.Areas"%>
 <%@page import="POJOS.Empleos"%>
 <%@page import="Base.AdministracionDTO"%>
@@ -33,6 +35,9 @@
             AdministracionDTO admin = new AdministracionDTO();
             Empleos[] cuantos = admin.devolviendo();
             Areas[] cuantas = admin.devolviendoAreas();
+            Tarifas[] cuantas2 = admin.devolviendoTarifas();
+            String[] nombresEmpleados = admin.devolviendoNombresE();
+            Empleados[] listadoempleados = admin.devolviendoEmpleados();
         %>
 
         <%@include file="nav.html"%>

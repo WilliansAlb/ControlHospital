@@ -1,7 +1,7 @@
 <center>
     <div id="menucontratacion">
         <form name="fcolors">
-            <label><input type="radio" name="test" value="div1" checked><img src="../img/buy1.png" class="imgmenu" onclick="mostrandoDiv('div1')"></label><label><input type="radio" name="test" value="div2"><img src="../img/shell1.png" class="imgmenu" onclick="mostrandoDiv('div2')"></label><label><input type="radio" name="test" value="div3"><img src="../img/inventario1.png" class="imgmenu" onclick="mostrandoDiv('div3')"></label><label><input type="radio" name="test" value="div4"><img src="../img/falta1.png" class="imgmenu" onclick="mostrandoDiv('div4')"></label><label><input type="radio" name="test" value="div5"><img src="../img/buy1.png" class="imgmenu" onclick="mostrandoDiv('div5')">
+            <label><input type="radio" name="test" value="div1" checked><img src="../img/buy1.png" class="imgmenu" onclick="mostrandoDiv('div1')"></label><label><input type="radio" name="test" value="div2"><img src="../img/shell1.png" class="imgmenu" onclick="mostrandoDiv('div2')"></label><label><input type="radio" name="test" value="div3"><img src="../img/inventario1.png" class="imgmenu" onclick="mostrandoDiv('div3')"></label><label><input type="radio" name="test" value="div4"><img src="../img/falta1.png" class="imgmenu" onclick="mostrandoDiv('div4')"></label><label><input type="radio" name="test" value="div5"><img src="../img/buy1.png" class="imgmenu" onclick="mostrandoDiv('div5')"></label><label><input type="radio" name="test" value="div6"><img src="../img/buy1.png" class="imgmenu" onclick="mostrandoDiv('div6')">
             </label>
         </form>
     </div>
@@ -218,9 +218,141 @@
                     </div>
                 </div>
             </div>
-            <div id="div5">
+            <div id="div5" style="display: none;">
                 <div class="admin">
-                    
+                    <div class="consult1">
+                        <h1>Crear tarifas</h1>
+                        <div class="datoscandidato">
+                            <label for="nombretarifa">Nombre tarifa: </label>
+                            <br>
+                            <input type="text" id="nombretarifa" name="nombretarifa">
+                        </div>
+                        <div class="datoscandidato">
+                            <div class="datoscandidato2">
+                                <label for="valortarifa">Costo para el hospital: </label>
+                                <br>
+                                <input type="number" min="0" step="0.01" value="0" id="valortarifa" name="valortarifa">
+                            </div>
+                            <div class="datoscandidato2">
+                                <label for="preciotarifa">Precio: </label>
+                                <br>
+                                <input type="number" min="0" step="0.01" value="0" id="preciotarifa" name="preciotarifa">
+                            </div>
+                        </div>
+                        <div class="datoscandidato">
+                            <label for="medicoespecial">Medico Especial: </label>
+                            <br>
+                            <select id="medicoespecial">
+                                <option value="1">Si</option>
+                                <option value="0">No</option>
+                            </select>
+                            <hr style="width: 50%;">
+                            <div id="ocultomedico">
+                                <label for="pagomedicoes">Pago Medico Especial</label>
+                                <br>
+                                <input type="number" min="0" step="0.01" value="0" id="pagomedicoes" name="pagomedicoes">
+                            </div>
+                        </div>
+                        <button id="creartarifa" style="margin: 2% 0% 0%;">CREAR TARIFA</button>
+                    </div>
+                    <div class="consult2">
+                        <h1>Tarifas creadas</h1>
+                        <div class="datoscandidato">
+                            <table id="tablaareas">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>NOMBRE</th>
+                                        <th>COSTO</th>
+                                        <th>ESPECIALITA</th>
+                                        <th>PAGO POR ESPECIALISTA</th>
+                                        <th>PRECIO</th>
+                                        <th>EDITAR</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="cuerpotarifa">
+                                    <%
+                                    if (admin.existeTarifas()){
+                                    for (int i = 0; i < cuantas2.length; i++){
+                                    %>
+                                    <tr>
+                                        <td><%out.print(cuantas2[i].getId_tarifa());%></td>
+                                        <td><%out.print(cuantas2[i].getNombre());%></td>
+                                        <td><%out.print(cuantas2[i].getCosto());%></td>
+                                        <% String mensaje3 = "";
+                                        if (cuantas2[i].getPago_especialista()>0){mensaje3 = "S&iacute";}else{mensaje3 = "No";}%>
+                                        <td><%out.print(mensaje3);%></td>
+                                        <td><%out.print(cuantas2[i].getPago_especialista());%></td>
+                                        <td><%out.print(cuantas2[i].getPrecio());%></td>
+                                        <td><button class="btnespecial">EDITAR</button></td>
+                                    </tr>
+                                    <%}} else {%>
+                                    <tr>
+                                        <td colspan="7">NO SE HA CREADO NINGUNA TARIFA AUN</td>
+                                    </tr>
+                                    <%}%>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="div6" style="display: none;">
+                <div class="admin">
+                    <div class="datoscandidato">
+                        <h3>LISTADO EMPLEADOS</h3>
+                        <div class="datoscandidato2">
+                            <label for="nombreempleado1">Nombre:</label>
+                            <br>
+                            <input list="nombresempleados" id="nombreempleado1" value="" name="nombreempleado1">
+                            <br>
+                            <datalist id="nombresempleados">
+                                <%for (int i = 0; i < nombresEmpleados.length; i++){%>
+                                <option value="<%out.print(nombresEmpleados[i]);%>">
+                                    <%}%>
+                            </datalist>
+                        </div>
+                        <div class="datoscandidato2">
+                            <label for="idempleado1">ID: </label>
+                            <br>
+                            <select id="idempleado1" name="idempleado1">
+                                <option value="todo">MOSTRANDO TODO</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="datoscandidato" style="margin: 2px;">
+                        <table id="tablaempleados">
+                            <thead>
+                                <tr>
+                                    <th>CUI</th>
+                                    <th>NOMBRE</th>
+                                    <th>MEDICO ESPECIAL</th>
+                                    <th>EMPLEO</th>
+                                    <th>FECHA CONTRATO</th>
+                                    <th>EDITAR</th>
+                                </tr>
+                            </thead>
+                            <tbody id="cuerpotarifa">
+                                <%
+                                if (admin.existeEmpleados()){
+                                for (int i = 0; i < listadoempleados.length; i++){
+                                %>
+                                <tr>
+                                    <td><%out.print(listadoempleados[i].getCui());%></td>
+                                    <td><%out.print(listadoempleados[i].getNombre_empleado());%></td>
+                                    <td><%out.print(listadoempleados[i].isMedico_especial());%></td>
+                                    <td><%out.print(listadoempleados[i].getId_empleos());%></td>
+                                    <td><%out.print(listadoempleados[i].getFecha_contrato());%></td>
+                                    <td><button class="btnespecial" onclick="editarempleado(<%out.print(listadoempleados[i].getCui());%>)">EDITAR</button></td>
+                                </tr>
+                                <%}} else {%>
+                                <tr>
+                                    <td colspan="7">NO SE HA CREADO NINGUNA TARIFA AUN</td>
+                                </tr>
+                                <%}%>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </center>
